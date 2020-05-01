@@ -5,34 +5,70 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    private static Map<Integer, Months> months = new HashMap<>();
+    private static Map<Integer, Locations> locations = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        months.put(1, new Months(1, "January"));
-        months.put(2, new Months(2, "February"));
-        months.put(3, new Months(3, "March"));
-        months.put(4, new Months(4, "April"));
-        months.put(5, new Months(5, "May"));
-        months.put(6, new Months(6, "June"));
-        months.put(7, new Months(7, "July"));
-        months.put(8, new Months(8, "August"));
-        months.put(9, new Months(9, "September"));
-        months.put(10, new Months(10, "October"));
-        months.put(11, new Months(11, "November"));
-        months.put(12, new Months(12, "December"));
+        locations.put(0, new Locations(0, "You are sitting in front of a computer learning Java"));
+        locations.put(1, new Locations(1, "You are standing at the end of a road before a small brick building"));
+        locations.put(2, new Locations(2, "You are at the top of a hill"));
+        locations.put(3, new Locations(3, "You are inside a building, a well house for a small spring"));
+        locations.put(4, new Locations(4, "You are in a valley beside a stream"));
+        locations.put(5, new Locations(5, "You are in the forest"));
+
+        locations.get(1).addExit("W", 2);
+        locations.get(1).addExit("E", 3);
+        locations.get(1).addExit("S", 4);
+        locations.get(1).addExit("N", 5);
+//        locations.get(1).addExit("Q", 0);
+
+        locations.get(2).addExit("N", 5);
+//        locations.get(2).addExit("Q", 0);
+
+        locations.get(3).addExit("W", 1);
+//        locations.get(3).addExit("Q", 0);
+
+        locations.get(4).addExit("N", 1);
+        locations.get(4).addExit("W", 2);
+//        locations.get(4).addExit("Q", 0);
+
+        locations.get(5).addExit("S", 1);
+        locations.get(5).addExit("W", 2);
+//        locations.get(5).addExit("Q", 0);
 
         int loc = 1;
-        while (true) {
-            System.out.println(months.get(loc).getDescription());
-            if (loc == 0) {
-                break;
-            }
-            loc = scanner.nextInt();
-            if (!months.containsKey(loc)) {
-                System.out.println("There is no such month\n");
-            }
+//        while (true) {
+//            System.out.println(locations.get(loc).getDescription());
+//            if (loc == 0) {
+//                break;
+//            }
+//            Map<String, Integer> exits = locations.get(loc).getExits();
+//            System.out.println("Available exits are ");
+//            for (String exit : exits.keySet()) {
+//                System.out.print(exit + ", ");
+//            }
+//            System.out.println();
+//
+//            String direction = scanner.nextLine().toUpperCase();
+//
+//            if (exits.containsKey(direction)) {
+//                loc = exits.get(direction);
+//            } else {
+//                System.out.println("You cant go in that direction");
+//            }
+//        }
+
+        String[] road = "You are standing at the end of a road before a small brick building".split(" ");
+        for (String i : road) {
+            System.out.println(i);
+        }
+
+        System.out.println("================================================================================");
+
+        String[] building = "You are inside a building, a well house for a small spring".split(", ");
+        for (String i : building) {
+            System.out.println(i);
         }
     }
 }
