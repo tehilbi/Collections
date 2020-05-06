@@ -4,12 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Locations {
-    private final int locationID;
     private final String description;
     private final Map<String, Integer> exits;
 
-    public Locations(int locationID, String description, Map<String, Integer> exits) {
-        this.locationID = locationID;
+    public Locations(String description, Map<String, Integer> exits) {
         this.description = description;
         if (exits != null) {
             this.exits = new HashMap<>(exits);
@@ -17,10 +15,6 @@ public class Locations {
             this.exits = new HashMap<>();
         }
         this.exits.put("Q", 0);
-    }
-
-    public int getLocationID() {
-        return locationID;
     }
 
     public String getDescription() {
